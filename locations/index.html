@@ -16,7 +16,12 @@
         <div class="container">
             <div class="header-content">
                 <a href="/" class="logo">Greggs-<span>Menu</span>.net</a>
-                <nav>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav-menu">
                     <ul>
                         <li><a href="/">Home</a></li>
                         <li><a href="../breakfast/">Breakfast</a></li>
@@ -308,5 +313,25 @@
             </div>
         </div>
     </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuToggle.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuToggle.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
